@@ -1,0 +1,11 @@
+id
+usuario
+nombre
+apellido
+email
+telefono
+puesto
+permisos
+horario
+presupuesto
+sueldo
