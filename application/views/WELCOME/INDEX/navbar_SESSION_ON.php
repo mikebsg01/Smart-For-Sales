@@ -55,9 +55,10 @@
                         <div class="element place-right">
                             <a id="profile" class="fg-white dropdown-toggle" href="#"><?=$userdata['usuario']?>&nbsp;&nbsp;<i class="icon-cog"></i></a>
                             <ul class="dropdown-menu" data-role="dropdown">
-                                <li><a href="#">Mi Perfil</a></li>
+                                <li><a href="#">Mi Perfil &nbsp;<i class="icon-pencil fg-blue"></i></a></li>
+                                <li><a href="#">Personalizar &nbsp;<i class="icon-puzzle fg-blue"></i></a></li>
                                 <li class="divider"></li>
-                                <li><a href="<?=site_url("../../Logout/finish_session");?>">Cerrar Sesión</a></li>
+                                <li><a href="<?=site_url("../../Logout/finish_session");?>">Cerrar Sesión &nbsp;<i class="icon-exit fg-blue"></i></a></li>
                             </ul>
                         </div>
                         <div class="element place-right">

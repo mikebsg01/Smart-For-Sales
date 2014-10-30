@@ -30,12 +30,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $.Metro.initDropdowns();
+
             $("#management-of-items").click(function(){
                 $.Dialog({
                     width: '94%',
                     height: '86%',
                     padding: 15,
-                    overlay: true,
+                    overlay: false,
                     shadow: true,
                     flat: true,
                     icon: '<i class="icon-clipboard-2"></i>',
@@ -56,6 +57,7 @@
                                                 '<th class="text-left">Descripción</th>'+
                                                 '<th class="text-left">Cantidad</th>'+
                                                 '<th class="text-left">Precio Unitario</th>'+
+                                                '<th class="text-left">Precio de Venta</th>'
                                             '</tr>'+
                                         '</thead>'+
                                         '<tbody>'+
@@ -67,6 +69,7 @@
                                                 '<th class="text-left">Descripción</th>'+
                                                 '<th class="text-left">Cantidad</th>'+
                                                 '<th class="text-left">Precio Unitario</th>'+
+                                                '<th class="text-left">Precio de Venta</th>'
                                             '</tr>'+
                                         '</tfoot>'+
                                     '</table>'+
@@ -76,13 +79,14 @@
                         $(function(){
                             $('#itemsTable-1').dataTable( {
                                 "bProcessing": true,
-                                "sAjaxSource": "<?=base_url()?>data/dataTables-objects.txt",
+                                "sAjaxSource": "<?=base_url()?>index.php/item/getAllItems",
                                 "aoColumns": [
-                                    { "mData": "engine" },
-                                    { "mData": "browser" },
-                                    { "mData": "platform" },
-                                    { "mData": "version" },
-                                    { "mData": "grade" }
+                                    { "mData": "id" },
+                                    { "mData": "nombre" },
+                                    { "mData": "descripcion" },
+                                    { "mData": "cantidad" },
+                                    { "mData": "precio_unitario" },
+                                    { "mData": "precio_final" }
                                 ]
                             } );
                         });
@@ -90,6 +94,37 @@
                     }
                 });
             });
+
+
+            $("#add-item").click(function(){
+                $.Dialog({
+                    width: '68%',
+                    height: '76%',
+                    draggable: true,
+                    padding: 15,
+                    overlay: false,
+                    shadow: true,
+                    flat: true,
+                    sysButtons: { btnClose: true },
+                    icon: '<i class="icon-plus"></i>',
+                    title: 'Agregar un Artículo',
+                    content: '',
+                    overlayClickClose: false,
+                    onShow: function(_dialog){
+                        var content = _dialog.children('.content');
+                        $content = '<label for="nombre">Nombre: </label>'+
+                                    '<div class="input-control text size3 block" data-role="input-control">'+
+                                        '<input type="text" id="nombre" name="nombre" />'+
+                                    '</div>'+
+                                    '<label for="descripcion">Descripción: </label>'+
+                                    '<div class="input-control textarea size4" data-role="input-control">'+
+                                        '<textarea id="descripcion" name="descripcion"></textarea>'+
+                                    '</div>'
+                        content.html($content);
+                    }
+                });
+            });
+
         });
     </script>
 </head>

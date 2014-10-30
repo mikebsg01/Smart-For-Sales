@@ -50,7 +50,7 @@
                 </div>
             </a> <!-- end tile -->
 
-            <div class="tile bg-amber" data-click="transform">
+            <div id="add-item" class="tile bg-amber" data-click="transform">
                 <div class="tile-content">
                     <div class="text-right padding10 ntm">
                         <h1 class="fg-white no-margin"><i class="icon-plus"></i></h1>

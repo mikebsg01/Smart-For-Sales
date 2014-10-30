@@ -87,6 +87,12 @@ class Welcome extends CI_Controller {
 			$this->load->view('BASE/footer.php');
 		}
 	}
+
+	public function pruebaAjax(){
+		$nombre = $this->input->get('nombre');
+		echo '{ "nombre" : "'.$nombre.'" }';	
+	}
+	
 }
 
 /* End of file welcome.php */
