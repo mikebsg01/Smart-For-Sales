@@ -29,10 +29,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 	public function index(){
+
 		$data['AppName']='Smart For Sales';
 		$data['AppVersion']='0.1.0';
 		$data['AppLogo']='<span class="icon-grid-view"></span>';
-		
 		$user_logged = FALSE;
 
 		if($this->session->userdata('user_data')){
@@ -46,6 +46,19 @@ class Welcome extends CI_Controller {
 		}
 
 		if($user_logged == TRUE){	
+
+            $infoReceived = array(
+            					  	'error_upload' => $this->input->get('error_upload'),
+            					  	'success_upload' => $this->input->get('success_upload')
+            		 		     );
+
+            if($infoReceived['error_upload'] == 1){
+           		$data['error_upload'] = 1;
+            	$data['error_upload_title'] = 'Error del Servidor';
+            	$data['error_upload_content'] = 'El sistema upload (para subida de archivos) no esta funcionando correctamente. <br> Por favor verifiquelo con el proveedor del software.';
+            } else {
+            	$data['error_upload'] = 0;
+            } 
 
 			$this->load->view('WELCOME/INDEX/head_SESSION_ON.php',$data);
 			$this->load->view('WELCOME/INDEX/navbar_SESSION_ON.php',$data);
